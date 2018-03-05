@@ -1,0 +1,35 @@
+1. 启动docker daemon, 双击docker图标。 
+2. docker pull wnameless/oracle-xe-11g   拉最新的docker image文件。 
+2.1 docker run -d -p 1521:1521 --name oralce-xe-1 wnameless/oracle-xe-11g
+3. 初始化数据库用户名和表结构：
+3.1 log in as system/oracle: 
+CREATE USER miaosha IDENTIFIED BY "miaosha";
+GRANT CONNECT TO miaosha;
+GRANT CONNECT, RESOURCE, DBA TO miaosha;
+GRANT UNLIMITED TABLESPACE TO miaosha;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ITEM TO miaosha;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ITEM_ORDER TO miaosha;
+3.2 login as miaosha: 
+CREATE TABLE miaosha.ITEM (
+  ID     NUMBER(19) PRIMARY KEY,
+  NAME   VARCHAR2(500),
+  AMOUNT NUMBER(19) DEFAULT 0 NOT NULL
+);
+
+CREATE TABLE miaosha.ITEM_ORDER (
+  ID      NUMBER(19) PRIMARY KEY,
+  ITEM_ID NUMBER(19) REFERENCES ITEM (ID) NOT NULL,
+  USER_ID VARCHAR(500)
+);
+CREATE SEQUENCE miaosha.SEQ_ITEM_ORDER CACHE 1000;
+
+--------DB is done---------------
+
+
+4. /Users/shijijun/software/apache-tomcat-7.0.84/bin  ./startup.sh 
+--------start Tomcat is done------------ 
+
+
+
+
+
