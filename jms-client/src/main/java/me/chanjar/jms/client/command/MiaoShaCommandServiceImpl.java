@@ -26,6 +26,8 @@ public class MiaoShaCommandServiceImpl implements MiaoShaCommandService {
     try {
 //      LOGGER.info("the instance of jmsMessageSender is {}",jmsMessageSender.getClass().getName());
 //      System.out.println("the instance of jmsMessageSender is {}"+jmsMessageSender.getClass().getName());
+      LOGGER.info("the instance of jmsMessageSender is {}",jmsMessageSender.getClass().getName());
+      System.out.println("the instance of jmsMessageSender is {}"+jmsMessageSender.getClass().getName());
       jmsMessageSender.sendMessage(requestDto);
       return requestDto.getId();
     } catch (JMSException e) {
