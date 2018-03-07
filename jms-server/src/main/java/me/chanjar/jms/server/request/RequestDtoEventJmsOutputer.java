@@ -17,7 +17,7 @@ public class RequestDtoEventJmsOutputer implements EventHandler<RequestDtoEvent>
 
   @Override
   public void onEvent(RequestDtoEvent event, long sequence, boolean endOfBatch) throws Exception {
-
+    LOGGER.debug("#2 --- RequestDtoEventJmsOutputer called");
     ResponseDto responseDto = event.getResponseDto();
     if (responseDto == null) {
       return;
