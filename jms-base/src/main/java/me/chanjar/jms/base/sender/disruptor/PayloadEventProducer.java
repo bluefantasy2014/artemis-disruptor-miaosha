@@ -17,7 +17,7 @@ public class PayloadEventProducer {
   }
 
   public void onData(Object payload) throws JMSException {
-
+    System.out.println("sjj " +  ringBuffer + "," + payload);
     ringBuffer.publishEvent(TRANSLATOR, payload);
 
   }

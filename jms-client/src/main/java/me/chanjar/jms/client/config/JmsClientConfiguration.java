@@ -84,6 +84,7 @@ public class JmsClientConfiguration implements ApplicationContextAware {
         ringBufferSize
     );
 
+    System.out.println("me.chanjar.jms.client.config.JmsClientConfiguration.requestMessageSender: " + messageSender);
 
     BeanRegisterUtils.registerSingleton(
         applicationContext,

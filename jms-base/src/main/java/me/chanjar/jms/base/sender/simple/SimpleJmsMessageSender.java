@@ -25,7 +25,7 @@ public class SimpleJmsMessageSender implements JmsMessageSender {
 
   @Override
   public void sendMessage(MessageDto payload) throws JMSException {
-
+    System.out.println("SimpleJmsMessageSender " + payload + " ,"  + this);
     Message message = MessageConvertUtils.toMessage(messageConverter, session, payload);
     dupMessageDetectStrategy.setId(message, payload);
     messageProducer.send(message);
