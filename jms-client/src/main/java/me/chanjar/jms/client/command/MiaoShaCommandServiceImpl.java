@@ -15,7 +15,7 @@ import javax.jms.JMSException;
 @Component
 public class MiaoShaCommandServiceImpl implements MiaoShaCommandService {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(MiaoShaCommandService.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(MiaoShaCommandServiceImpl.class);
 
   private ResponseCache responseCache;
 
@@ -24,10 +24,7 @@ public class MiaoShaCommandServiceImpl implements MiaoShaCommandService {
   @Override
   public String doRequest(RequestDto requestDto) {
     try {
-//      LOGGER.info("the instance of jmsMessageSender is {}",jmsMessageSender.getClass().getName());
-//      System.out.println("the instance of jmsMessageSender is {}"+jmsMessageSender.getClass().getName());
-      LOGGER.info("the instance of jmsMessageSender is {}",jmsMessageSender.getClass().getName());
-      System.out.println("the instance of jmsMessageSender is {}"+jmsMessageSender.getClass().getName());
+      System.out.println("sjj the instance of jmsMessageSender is {}"+jmsMessageSender);
       jmsMessageSender.sendMessage(requestDto);
       return requestDto.getId();
     } catch (JMSException e) {

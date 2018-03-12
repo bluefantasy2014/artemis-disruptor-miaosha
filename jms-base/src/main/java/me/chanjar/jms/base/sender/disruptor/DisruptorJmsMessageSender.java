@@ -7,6 +7,9 @@ import me.chanjar.jms.base.sender.JmsMessageSender;
 import me.chanjar.jms.base.utils.ArtemisMessageDtoDupMessageDetectStrategy;
 import me.chanjar.jms.base.utils.DupMessageDetectStrategy;
 import me.chanjar.jms.base.utils.MessageConvertUtils;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.jms.support.converter.MessageConverter;
 import org.springframework.jms.support.converter.SimpleMessageConverter;
 
@@ -31,6 +34,7 @@ import javax.jms.*;
  * </p>
  */
 public class DisruptorJmsMessageSender implements JmsMessageSender, EventHandler<PayloadEvent> {
+  private static final Logger LOGGER = LoggerFactory.getLogger(DisruptorJmsMessageSender.class);
 
   private Session session;
 
@@ -51,7 +55,7 @@ public class DisruptorJmsMessageSender implements JmsMessageSender, EventHandler
 
   @Override
   public void onEvent(PayloadEvent event, long sequence, boolean endOfBatch) throws Exception {
-
+    LOGGER.info("sjj " + this + ", received a event: " + event);
     Message message = MessageConvertUtils.toMessage(messageConverter, session, event.getPayload());
     dupMessageDetectStrategy.setId(message, event.getPayload());
     messageProducer.send(message);
