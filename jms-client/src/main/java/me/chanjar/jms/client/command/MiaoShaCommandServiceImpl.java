@@ -35,6 +35,7 @@ public class MiaoShaCommandServiceImpl implements MiaoShaCommandService {
 
   @Override
   public ResponseDto getResponse(String requestId) {
+    LOGGER.info("sjj: the ResponseCache object of MiaoShaCommandServiceImpl is:" + responseCache.hashCode());
     return responseCache.getAndRemove(requestId);
   }
 

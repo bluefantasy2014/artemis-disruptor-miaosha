@@ -23,6 +23,7 @@ public class ResponseJmsMessageListener implements MessageListener {
   @Override
   public void onMessage(Message message) {
     try {
+      LOGGER.info("sjj: the ResponseCache object of ResponseJmsMessageListener is: " + responseCache.hashCode());
       ResponseDto responseDto = MessageConvertUtils.fromMessage(messageConverter, message);
       responseCache.put(responseDto);
     } catch (JMSException e) {

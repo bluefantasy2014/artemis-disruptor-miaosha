@@ -1,1 +1,1 @@
-java -jar -server -Xms2g -Xmx2g -Xdebug -Xrunjdwp:transport=dt_socket,address=5002,server=y,suspend=y -Dspring.config.location=./application-jms-server.properties ./backend/target/artemis-disruptor-miaosha-backend-1.0.0-SNAPSHOT.jar
+java -jar -server -Xms2g -Xmx2g -Xdebug -Xrunjdwp:transport=dt_socket,address=5002,server=y,suspend=n -Dspring.config.location=./application-jms-server.properties ./backend/target/artemis-disruptor-miaosha-backend-1.0.0-SNAPSHOT.jar
